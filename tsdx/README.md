@@ -1,6 +1,6 @@
 # TSDX React User Guide
 -TSDX: react TS组件开发脚手架
--通过rollup打包ES模块，tree shark按需加载
+-通过rollup打包ES模块，tree shaking按需加载
 
 > This TSDX setup is meant for developing React components (not apps!) that can be published to NPM. If you’re looking to build an app, you should use `create-react-app`, `razzle`, `nextjs`, `gatsby`, or `react-static`.
 
