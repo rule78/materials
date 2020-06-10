@@ -1,0 +1,58 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: PROJECTNAME
+  namespace: $NAMESPACE
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: PROJECTNAME
+    spec:
+      containers:
+      - name: PROJECTNAME
+        image: registry.jianke.com/library/PROJECTNAME:$IMAGE_TAG
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 5
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 60
+          timeoutSeconds: 5
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: CLOUD_CONFIG_SERVER
+          value: "http://config-server.dev.jianke.com"
+        - name: CLOUD_CONFIG_PROFILE
+          value: "dev"
+        - name: CLOUD_CONFIG_USER
+          value: "root"
+        - name: CLOUD_CONFIG_PASSWORD
+          value: "password"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: PROJECTNAME
+  namespace: $NAMESPACE
+  labels:
+    run: PROJECTNAME
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    name: http
+  selector:
+    run: PROJECTNAME

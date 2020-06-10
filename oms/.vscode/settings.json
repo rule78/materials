@@ -1,0 +1,14 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "vetur.validation.template": false,
+  "eslint.autoFixOnSave": true,
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    { "language": "vue", "autoFix": true },
+  ],
+  "html.format.wrapAttributes": "force-expand-multiline",
+  "javascript.preferences.quoteStyle": "single",
+  "editor.tabSize": 2,
+}
