@@ -10,16 +10,15 @@ interface InputProps {
 const Input: React.FC<InputProps> & {
   Textarea: typeof Textarea;
 } = ({ value, ...restProps }) => (
-  <div {...restProps} >
-    <input value={value} />
+  <div {...restProps}>
+    <input value={value} className="react-input" />
   </div>
 );
 
 Input.defaultProps = {
-  value: ''
+  value: '',
 };
 
 Input.Textarea = Textarea;
 
 export default Input;
-

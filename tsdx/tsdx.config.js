@@ -13,7 +13,7 @@ module.exports = {
           }),
         ],
         inject: false,
-        extract: "react-popup.min.css",
+        extract: "react-input.min.css",
       })
     );
     return config;
